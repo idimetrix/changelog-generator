@@ -1,0 +1,59 @@
+{
+  "name": "changelog-generator",
+  "version": "1.0.0",
+  "description": "A GitHub Action that compares the commit differences between two branches.",
+  "license": "MIT",
+  "homepage": "https://github.com/idimetrix/changelog-generator#readme",
+  "url": "https://github.com/idimetrix/changelog-generator",
+  "bugs": {
+    "url": "https://github.com/idimetrix/changelog-generator/issues"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Dmitrii Selikhov",
+    "email": "dmitrii.selikhov@gmail.com",
+    "url": "https://www.linkedin.com/in/dimetrix"
+  },
+  "contributors": [
+    {
+      "name": "Dmitrii Selikhov",
+      "email": "dmitrii.selikhov@gmail.com",
+      "url": "https://www.linkedin.com/in/dimetrix"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idimetrix/changelog-generator.git"
+  },
+  "email": "dmitrii.selikhov@gmail.com",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "husky && npm run build",
+    "build": "ncc build src/index.ts -o dist",
+    "watch": "ncc watch src/index.ts -o dist",
+    "type": "tsc --noEmit --incremental",
+    "prettier": "prettier --write src/**",
+    "format": "npm run prettier && npm run type",
+    "bootstrap": "npm install && npm run format"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run build"
+    ]
+  },
+  "engines": {
+    "node": ">=v20.11.0",
+    "npm": ">=10.2.4"
+  },
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "@actions/github": "6.0.0"
+  },
+  "devDependencies": {
+    "@kkt/ncc": "1.1.2",
+    "lint-staged": "15.2.10",
+    "prettier": "3.3.3",
+    "typescript": "5.6.3",
+    "husky": "9.1.6"
+  }
+}
